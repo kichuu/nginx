@@ -1,13 +1,5 @@
-FROM nginx:alpine
+FROM nginx:stable
 
-# Remove the default config
-RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy our custom config into the right place
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80
 EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
